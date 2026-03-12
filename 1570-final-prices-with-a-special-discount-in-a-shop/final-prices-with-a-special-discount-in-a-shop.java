@@ -2,15 +2,17 @@ class Solution {
     public int[] finalPrices(int[] prices) {
         int n = prices.length;
         int[] result = new int[n];
-        System.arraycopy(prices, 0, result, 0, n);
 
         for (int i = 0; i < n; i++) {
+            int discount = 0;
+
             for (int j = i + 1; j < n; j++) {
                 if (prices[j] <= prices[i]) {
-                    result[i] = prices[i] - prices[j];
+                    discount = prices[j];
                     break;
                 }
             }
+            result[i] = prices[i] - discount;
         }
         return result;
     }
