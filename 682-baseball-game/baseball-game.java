@@ -13,7 +13,7 @@ class Solution {
             } else if (s.equals("C")) {
                 st.pop();
             } else {
-                st.push(Integer.parseInt(s));
+                st.push(Integer.valueOf(s));
             }
         }
         int res = 0;
