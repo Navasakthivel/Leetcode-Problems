@@ -1,26 +1,22 @@
-
+import java.util.Stack;
 
 class Solution {
     public int calPoints(String[] ops) {
-        Deque<Integer> stack = new ArrayDeque<>();
+        Stack<Integer> stack = new Stack<>();
         
         for (String op : ops) {
-            switch (op) {
-                case "+":
-                    int last = stack.pop();
-                    int secondLast = stack.peek();
-                    int sum = last + secondLast;
-                    stack.push(last); 
-                    stack.push(sum);
-                    break;
-                case "D":
-                    stack.push(stack.peek() * 2);
-                    break;
-                case "C":
-                    stack.pop();
-                    break;
-                default:
-                    stack.push(Integer.parseInt(op));
+            if (op.equals("+")) {
+                int last = stack.pop();
+                int secondLast = stack.peek();
+                int sum = last + secondLast;
+                stack.push(last); 
+                stack.push(sum);
+            } else if (op.equals("D")) {
+                stack.push(stack.peek() * 2);
+            } else if (op.equals("C")) {
+                stack.pop();
+            } else {
+                stack.push(Integer.parseInt(op));
             }
         }
         
