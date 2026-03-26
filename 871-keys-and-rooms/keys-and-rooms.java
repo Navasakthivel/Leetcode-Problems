@@ -9,13 +9,13 @@ class Solution {
         }
         return true;
     }
-    boolean dfs(int room,List<List<Integer>> rooms,boolean [] visited){
+    void dfs(int room,List<List<Integer>> rooms,boolean [] visited){
         visited[room]=true;
         for(int key:rooms.get(room)){
             if(!visited[key]){
                 dfs(key,rooms,visited);
             }
         }
-        return false;
+        return;
     }
 }
