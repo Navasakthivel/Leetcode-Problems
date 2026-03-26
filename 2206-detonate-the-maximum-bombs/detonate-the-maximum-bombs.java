@@ -2,11 +2,13 @@ class Solution {
     public int maximumDetonation(int[][] bombs) {
         int n=bombs.length;
 
+        //1.create graph (adj list)
         List<List<Integer>> graph = new ArrayList<>();
         for(int i=0;i<n;i++){
             graph.add(new ArrayList<>());
         }
 
+        //2.Build graph using distance formula:
         for(int i=0;i<n;i++){
             long x1 = bombs[i][0];
             long y1 = bombs[i][1];
@@ -27,6 +29,7 @@ class Solution {
             }
         }
         
+        //3.
         int max=0;
         for(int i=0;i<n;i++){
             boolean[] visited = new boolean[n];
@@ -35,6 +38,8 @@ class Solution {
         }
         return max;
     }
+
+    //4.DFS
     int dfs(List<List<Integer>> graph, boolean[]visited, int node){
         visited[node]=true;
         int count=1;
